@@ -1,0 +1,20 @@
+DROP DATABASE IF EXISTS GuessGame;
+CREATE DATABASE IF NOT EXISTS GuessGame;
+
+USE GuessGame;
+
+CREATE TABLE game(
+	gameID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `status` VARCHAR(15) NOT NULL,
+    answer INT NOT NULL
+);
+
+CREATE TABLE round(
+	gameID INT NOT NULL,
+		CONSTRAINT FOREIGN KEY fk_game_round (gameID) REFERENCES game(gameID),
+    guess INT NOT NULL,
+    timeOfGuess DATETIME NOT NULL,
+    exactMatch INT NOT NULL,
+    partialMatch INT NOT NULL
+
+);
